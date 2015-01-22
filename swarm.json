@@ -8,13 +8,13 @@
           "component_name": "wordpress",
           "image": "wordpress:latest",
           "ports": [
-            "8080/tcp"
+            "80/tcp"
           ],
           "env": [
             "WORDPRESS_DB_PASSWORD=mysecretpassword"
           ],
           "domains": {
-            "$username-wordpress.gigantic.io": "8080"
+            "$username-wordpress.gigantic.io": "80"
           },
           "dependencies": [
             {
