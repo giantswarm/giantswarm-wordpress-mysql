@@ -1,0 +1,39 @@
+{
+  "app_name": "wordpress",
+  "services": [
+    {
+      "service_name": "wordpress-service",
+      "components": [
+        {
+          "component_name": "wordpress",
+          "image": "wordpress:latest",
+          "ports": [
+            "8080/tcp"
+          ],
+          "env": [
+            "WORDPRESS_DB_PASSWORD=mysecretpassword"
+          ],
+          "domains": {
+            "$username-wordpress.gigantic.io": "8080"
+          },
+          "dependencies": [
+            {
+              "name": "mysql",
+              "port": 3306
+            }
+          ]
+        },
+        {
+          "component_name": "mysql",
+          "image": "mysql:5.5",
+          "ports": [
+            "3306/tcp"
+          ],
+          "env": [
+            "MYSQL_ROOT_PASSWORD=mysecretpassword"
+          ]
+        }
+      ]
+    }
+  ]
+}
